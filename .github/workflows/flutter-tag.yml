@@ -3,6 +3,9 @@ name: Flutter Tag Build
 on:
   workflow_dispatch:
     inputs:
+      tag:
+        description: 'Tag to build'
+        required: true
       rendezvous_server:
         description: 'Rendezvous Server'
         required: false
@@ -12,8 +15,6 @@ on:
         required: false
         default: '4n1ErBWfZbwVRgSY1t86+VU8J0VeUNrUsvFdXkpXwY8='
   push:
-    branches:
-      - master
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
       - '[0-9]+.[0-9]+.[0-9]+'
@@ -26,6 +27,6 @@ jobs:
     secrets: inherit
     with:
       upload-artifact: true
-      upload-tag: ${{ github.ref_name }}
+      upload-tag: ${{ inputs.tag || github.ref_name }}
       rendezvous_server: ${{ inputs.rendezvous_server }}
       rs_pub_key: ${{ inputs.rs_pub_key }}
