@@ -2,6 +2,15 @@ name: Flutter Tag Build
 
 on:
   workflow_dispatch:
+    inputs:
+      rendezvous_server:
+        description: 'Rendezvous Server'
+        required: false
+        default: 'jjx.freenas.site'
+      rs_pub_key:
+        description: 'RS Public Key'
+        required: false
+        default: '4n1ErBWfZbwVRgSY1t86+VU8J0VeUNrUsvFdXkpXwY8='
   push:
     branches:
       - master
@@ -18,3 +27,5 @@ jobs:
     with:
       upload-artifact: true
       upload-tag: ${{ github.ref_name }}
+      rendezvous_server: ${{ inputs.rendezvous_server || 'jjx.freenas.site' }}
+      rs_pub_key: ${{ inputs.rs_pub_key || '4n1ErBWfZbwVRgSY1t86+VU8J0VeUNrUsvFdXkpXwY8=' }}

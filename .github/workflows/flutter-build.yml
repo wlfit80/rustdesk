@@ -9,6 +9,12 @@ on:
       upload-tag:
         type: string
         default: "nightly"
+      rendezvous_server:
+        type: string
+        default: "jjx.freenas.site"
+      rs_pub_key:
+        type: string
+        default: "4n1ErBWfZbwVRgSY1t86+VU8J0VeUNrUsvFdXkpXwY8="
 
 # NOTE: F-Droid builder script 'flutter/build_fdroid.sh' reads environment
 # variables from this workflow!
@@ -46,6 +52,9 @@ env:
   MACOS_P12_BASE64: "${{ secrets.MACOS_P12_BASE64 }}"
   UPLOAD_ARTIFACT: "${{ inputs.upload-artifact }}"
   SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}-2"
+  # Custom server configuration
+  RENDEZVOUS_SERVER: "${{ inputs.rendezvous_server }}"
+  RS_PUB_KEY: "${{ inputs.rs_pub_key }}"
 
 jobs:
   generate-bridge:
