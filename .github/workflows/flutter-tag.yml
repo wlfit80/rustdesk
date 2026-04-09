@@ -27,5 +27,5 @@ jobs:
     with:
       upload-artifact: true
       upload-tag: ${{ github.ref_name }}
-      rendezvous_server: ${{ inputs.rendezvous_server || 'jjx.freenas.site' }}
-      rs_pub_key: ${{ inputs.rs_pub_key || '4n1ErBWfZbwVRgSY1t86+VU8J0VeUNrUsvFdXkpXwY8=' }}
+      rendezvous_server: ${{ inputs.rendezvous_server }}
+      rs_pub_key: ${{ inputs.rs_pub_key }}
